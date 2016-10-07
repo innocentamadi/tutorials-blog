@@ -1,0 +1,24 @@
+.topic-wrapper, .chapter-wrapper {
+  margin-top: 15px;
+  background: $sidebar-bg-color;
+  padding: 10px 10px 5px 20px;
+  color: rgba(0,0,0,0.7);
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  h4 {
+    font-size: 1em;
+  }
+
+  h3, h4 {
+    font-weight: 400;
+
+    span {
+      color: $primary-color;
+      font-weight: 600;
+      margin-right: 5px;
+    }
+  }
+}

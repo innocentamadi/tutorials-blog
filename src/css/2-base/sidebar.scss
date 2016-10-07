@@ -1,0 +1,113 @@
+.sidebar {
+  height: 100%;
+
+  .sidebar-wrapper {
+    display: table;
+    height: 100%;
+    table-layout: fixed;
+  }
+  .left-sidebar {
+    background-color: $sidebar-bg-color;
+    border-right: 1px solid $lines;
+    width: 230px;
+
+    @include phablet {
+      display: none;
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  .sidebar-content {
+    bottom: 0;
+    left: 0;
+    padding-top: 8px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .author-wrapper {
+    align-items: center;
+    color: #0c4d8a;
+    display: flex;
+    font-size: 20px;
+    font-weight: 400;
+    height: 100px;
+    justify-content: center;
+
+    .author-name {
+      color: rgba(0,0,0,0.6);
+      margin-left: 5px;
+    }
+  }
+
+  .sidebar-elements {
+    margin: 0;
+    padding: 0;
+    counter-increment: step-counter;
+
+    > li {
+      list-style: none;
+      margin-bottom: 15px;
+
+      > a {
+        display: block;
+        color: lighten($body-text, 30);
+        font-size: 14px;
+        line-height: 38px;
+        overflow: hidden;
+        padding: 0 20px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .active {
+        color: $body-text;
+        font-weight: 400;
+      }
+
+      .fa {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .divider {
+    color: $primary-color;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 30px;
+    padding: 20px 20px 0;
+    text-transform: uppercase;
+  }
+
+  .tutorial {
+    > a {
+      color: rgba(0, 0, 0, 0.7);
+
+      &::before {
+        content: counter(step-counter)'.';
+        margin-right: 5px;
+        color: lighten($body-text, 30);
+        border-radius: 3px;
+      }
+    }
+  }
+  .chapters {
+    li > a {
+      color: lighten($body-text, 30);
+      line-height: 2;
+
+      &.active ~ ul.pages {
+        display: block;
+      }
+    }
+
+    ul.pages {
+      display: none;
+    }
+  }
+}
