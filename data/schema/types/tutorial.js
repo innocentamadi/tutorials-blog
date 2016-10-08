@@ -11,9 +11,14 @@ import {
 } from '../helpers/dbHelpers.js';
 
 import {
+  AUTHOR,
   TUTORIAL,
   CHAPTER
 } from '../../constants';
+
+import Author from './author.js';
+
+import {getRecordByID} from '../helpers/dbHelpers';
 
 const Tutorial = new GraphQLObjectType({
   name: TUTORIAL,
@@ -22,6 +27,10 @@ const Tutorial = new GraphQLObjectType({
     title: {type: GraphQLString},
     duration: {type: GraphQLString},
     author_id: {type: GraphQLInt},
+    author: {
+      type: Author,
+      resolve: tut => getRecordByID('authors', tut.author_id),
+    },
     chaptersConnection: getChildConnectionByName({
       typeName: 'TutorialChapters',
       tableType: CHAPTER,
