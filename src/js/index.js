@@ -9,13 +9,16 @@ import '../css/main.scss';
 import 'font-awesome/css/font-awesome.css'
 import configureStore from './store/configureStore';
 import { loadData } from './utils/appInit';
+import {client} from './reducers';
+
+import { ApolloProvider } from 'react-apollo';
 
 let store = configureStore();
 loadData(store);
 
 render (
-  <Provider store={store}>
+  <ApolloProvider store={store} client={client} >
     <Router history={browserHistory} routes={routes} />
-  </Provider>,
+  </ApolloProvider>,
   document.getElementById('app')
 );

@@ -1,5 +1,6 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { Router, Route, IndexRoute } from 'react-router';
+// import App from './components/App';
 import App from './components/App';
 import HomePage from './components/home/Index';
 import AboutPage from './components/about/Index';

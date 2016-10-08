@@ -13,7 +13,7 @@ deployment:
   production:
     branch: master
     heroku:
-      appname: hiddenwisdom
+      appname: tutorialsql
 
 test:
   override:

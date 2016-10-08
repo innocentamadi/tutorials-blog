@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import pages from '../../../../../data/data/pages';
 import Relay from 'react-relay';
 
-let Page = ({page}) => {
+const Page = ({page}) => {
    return (
     <div className="page-wrapper">
       <div className="title">
@@ -21,21 +21,21 @@ let Page = ({page}) => {
    )
  }
 
-Page = Relay.createContainer({
-	initial_variables: {
-		id: 5
-	},
-	fragments: {
-		page: () => Relay.QL`
-			fragment on Page {
-				id,
-				title,
-				chapter_id,
-				body
-			}
-		`
-	}
-});
+// Page = Relay.createContainer({
+// 	initial_variables: {
+// 		id: 5
+// 	},
+// 	fragments: {
+// 		page: () => Relay.QL`
+// 			fragment on Page {
+// 				id,
+// 				title,
+// 				chapter_id,
+// 				body
+// 			}
+// 		`
+// 	}
+// });
  Page.propTypes = {
  }
 
