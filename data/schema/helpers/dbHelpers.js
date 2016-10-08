@@ -20,8 +20,9 @@ import {
   mutationWithClientMutationId
 } from 'graphql-relay';
 
-const getRecordByColumn = (tableName, columnValue) => {
-  return db.one(`SELECT * FROM ${tableName} WHERE id = $1`, columnValue)
+export const getRecordByID = (tableName, columnValue) => {
+  return db
+    .one(`SELECT * FROM ${tableName} WHERE id = $1`, columnValue)
     .then(result => result);
 };
 
@@ -43,7 +44,7 @@ const getFieldByColumn = (tableType, tableName) => ({
   args: {
     id: {type: new GraphQLNonNull(GraphQLID)}
   },
-  resolve: (_, args) => getRecordByColumn(tableName, args.id)
+  resolve: (_, args) => getRecordByID(tableName, args.id)
 });
 
 const getRootConnectionByName = (tableType, tableName) => {
