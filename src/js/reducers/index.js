@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import proverbs from './proverbs/proverbReducer';
+import tutorials from './tutorials/tutorialReducer';
 import translations from './translations/translationReducer';
 import ajaxCallsInProgress from './ajaxStatusReducer';
 import ApolloClient, {createNetworkInterface} from 'apollo-client';
@@ -9,7 +9,7 @@ export const client = new ApolloClient({
 });
 
 const rootReducer = combineReducers({
-  proverbs,
+  tutorials,
   translations,
   ajaxCallsInProgress,
   apollo: client.reducer(),
