@@ -112,7 +112,7 @@ export default function translationReducer(state = initialState.translations, ac
     case types.LOAD_TRANSLATIONS_SUCCESS:
       return storeHelpers.loadTranslations(state, action.itemId, action.translations);
 &nbsp;
-<span class="branch-1 cbranch-no" title="branch not covered" >    case types.LOAD_PROVERB_SUCCESS: <span class="cstat-no" title="statement not covered" ></span>{</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >    case types.LOAD_TUTORIAL_SUCCESS: <span class="cstat-no" title="statement not covered" ></span>{</span>
       const {item_no, translations} = <span class="cstat-no" title="statement not covered" >action.item;</span>
 <span class="cstat-no" title="statement not covered" >      return storeHelpers.loadTranslations(state, item_no, translations);</span>
     }

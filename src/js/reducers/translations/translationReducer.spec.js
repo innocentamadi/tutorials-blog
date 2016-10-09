@@ -38,12 +38,12 @@ describe('Translation Reducer Test', () => {
 
     // action
     const newState = translationReducer(initialState, action);
-    const updatedProverbTranslation = newState[itemId];
+    const updatedTutorialTranslation = newState[itemId];
 
     // assert
-    expect(Object.keys(updatedProverbTranslation).length).toEqual(3);
-    expect(updatedProverbTranslation['A12'].id).toEqual('A12');
-    expect(updatedProverbTranslation['C'].id).toEqual('C');
+    expect(Object.keys(updatedTutorialTranslation).length).toEqual(3);
+    expect(updatedTutorialTranslation['A12'].id).toEqual('A12');
+    expect(updatedTutorialTranslation['C'].id).toEqual('C');
   });
 
   it('should update translation when passed UPDATE_TRANSLATION_SUCCESS', () => {
@@ -59,10 +59,10 @@ describe('Translation Reducer Test', () => {
 
     // action
     const updatedState = translationReducer(initialState, action);
-    const updatedProverbTranslation = updatedState[itemId];
+    const updatedTutorialTranslation = updatedState[itemId];
 
     // assertions
-    expect(Object.keys(updatedProverbTranslation).length).toEqual(2);
-    expect(updatedProverbTranslation[translation.id].labor_cost).toEqual(34);
+    expect(Object.keys(updatedTutorialTranslation).length).toEqual(2);
+    expect(updatedTutorialTranslation[translation.id].labor_cost).toEqual(34);
   });
 });

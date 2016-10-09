@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/js/components/common/cards/proverbs/ProverbCards.spec.js</title>
+    <title>Code coverage report for src/js/components/common/cards/proverbs/TutorialCards.spec.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../../../../index.html">All files</a> / <a href="index.html">src/js/components/common/cards/proverbs</a> ProverbCards.spec.js
+      <a href="../../../../../../index.html">All files</a> / <a href="index.html">src/js/components/common/cards/proverbs</a> TutorialCards.spec.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -98,7 +98,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import expect from 'expect';
 import React from 'react'; // eslint-disable-line no-unused-vars
 import {mount, shallow} from 'enzyme'; // eslint-disable-line no-unused-vars
-import ProverbCards from './ProverbCards';
+import TutorialCards from './TutorialCards';
 &nbsp;
 /**
 * @return {Func} A shallow dom for tests
@@ -110,15 +110,15 @@ function setup(status) {
       2: { id: 2 }
     }
   };
-  return shallow(&lt;ProverbCards {...props} /&gt;);
+  return shallow(&lt;TutorialCards {...props} /&gt;);
 }
 &nbsp;
-describe('&lt;ProverbCards /&gt;', () =&gt; {
-  it('renders the ProverbCards component', () =&gt; {
+describe('&lt;TutorialCards /&gt;', () =&gt; {
+  it('renders the TutorialCards component', () =&gt; {
     const wrapper = setup();
 &nbsp;
     // assertions
-    expect(wrapper.find('ProverbCard').length).toEqual(2);
+    expect(wrapper.find('TutorialCard').length).toEqual(2);
   });
 });
 &nbsp;</pre></td></tr>

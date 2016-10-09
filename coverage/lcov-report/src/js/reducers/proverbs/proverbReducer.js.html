@@ -87,14 +87,14 @@ import initialState from '../initialState';
 &nbsp;
 export default function proverbReducer(state = initialState.proverbs, action) {
   switch (action.type) {
-    case types.LOAD_PROVERBS_SUCCESS:
-      return storeHelpers.loadProverbs(state, action.proverbs);
+    case types.LOAD_TUTORIALS_SUCCESS:
+      return storeHelpers.loadTutorials(state, action.proverbs);
 &nbsp;
-<span class="branch-1 cbranch-no" title="branch not covered" >    case types.LOAD_PROVERB_SUCCESS:</span>
-<span class="cstat-no" title="statement not covered" >      return storeHelpers.updateProverb(state, action.proverb);</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >    case types.LOAD_TUTORIAL_SUCCESS:</span>
+<span class="cstat-no" title="statement not covered" >      return storeHelpers.updateTutorial(state, action.proverb);</span>
 &nbsp;
-    case types.UPDATE_PROVERB_SUCCESS:
-      return storeHelpers.updateProverb(state, action.proverb);
+    case types.UPDATE_TUTORIAL_SUCCESS:
+      return storeHelpers.updateTutorial(state, action.proverb);
 &nbsp;
     default:
       return state;

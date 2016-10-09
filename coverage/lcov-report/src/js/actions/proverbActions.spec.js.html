@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/js/actions/proverbActions.spec.js</title>
+    <title>Code coverage report for src/js/actions/tutorialActions.spec.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">src/js/actions</a> proverbActions.spec.js
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/js/actions</a> tutorialActions.spec.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -170,7 +170,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import expect from 'expect';
-import * as proverbActions from './proverbActions';
+import * as tutorialActions from './tutorialActions';
 import * as types from './actionTypes';
 import thunk from 'redux-thunk';
 import nock from 'nock';
@@ -178,20 +178,20 @@ import configureMockStore from 'redux-mock-store';
 &nbsp;
 import Config from '../config/environment';
 &nbsp;
-describe('loadProverbsSuccess', () =&gt; {
-  describe('Create load Proverbs Action', () =&gt; {
-    it('should create a LOAD_PROVERBS_SUCCESS action', () =&gt; {
+describe('loadTutorialsSuccess', () =&gt; {
+  describe('Create load Tutorials Action', () =&gt; {
+    it('should create a LOAD_TUTORIALS_SUCCESS action', () =&gt; {
       // setup
       const proverbs = [
         {id: 'A1023'}
       ];
       const expectedAction = {
-        type: types.default.LOAD_PROVERBS_SUCCESS,
+        type: types.default.LOAD_TUTORIALS_SUCCESS,
         proverbs
       };
 &nbsp;
       // actions
-      const action = proverbActions.loadProverbsSuccess(proverbs);
+      const action = tutorialActions.loadTutorialsSuccess(proverbs);
 &nbsp;
       // assertions
       expect(action).toEqual(expectedAction);
@@ -202,7 +202,7 @@ describe('loadProverbsSuccess', () =&gt; {
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 &nbsp;
-describe('loadProverbs', function() {
+describe('loadTutorials', function() {
   afterEach(() =&gt; {
     nock.cleanAll();
   });
@@ -216,16 +216,16 @@ describe('loadProverbs', function() {
     .reply(200, {body: proverbs});
 &nbsp;
     const expectedActions = [
-      {type: types.default.LOAD_PROVERBS_SUCCESS, proverbs}
+      {type: types.default.LOAD_TUTORIALS_SUCCESS, proverbs}
     ];
 &nbsp;
     // action
     const initialAppState = {tags: []};
     const store = mockStore(initialAppState, expectedActions);
 &nbsp;
-    store.dispatch(proverbActions.loadProverbs()).then(<span class="fstat-no" title="function not covered" >() =&gt; </span>{
+    store.dispatch(tutorialActions.loadTutorials()).then(<span class="fstat-no" title="function not covered" >() =&gt; </span>{
       c</span>onst actions = <span class="cstat-no" title="statement not covered" >store.getActions();
-      // expect(actions[0].type).toEqual(types.default.LOAD_PROVERBS_SUCCESS);
+      // expect(actions[0].type).toEqual(types.default.LOAD_TUTORIALS_SUCCESS);
       // expect(actions[0].proverbs).toEqual(proverbs);
     });
 &nbsp;

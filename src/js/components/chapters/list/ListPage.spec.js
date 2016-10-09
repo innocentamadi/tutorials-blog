@@ -25,6 +25,6 @@ describe('<ListPage />', () => {
 
   it('renders the IndexPage component', () => {
     expect(wrapper.find('div.proverbs-index').length).toEqual(1);
-    expect(wrapper.find('ProverbCards').length).toEqual(1);
+    expect(wrapper.find('TutorialCards').length).toEqual(1);
   });
 });

@@ -8,7 +8,7 @@ import assign from 'object-assign';
 * @param {Object} proverbs object of proverbs (unserialized)
 * @return {object} new serialized proverb object
 */
-export function loadProverbs(state, proverbs) {
+export function loadTutorials(state, proverbs) {
   return assign({}, state, enums.serializeByKey(proverbs));
 }
 
@@ -23,12 +23,12 @@ export function edit(proverbs, id) {
 
 /**
 * @param {Object} proverbs object of proverbs currently in state
-* @param {Object} updatedProverb of proverb to edit
+* @param {Object} updatedTutorial of proverb to edit
 * @param {Object} editing: Boolean to show if edit status is to be set to editing
 * @return {object} new serialized proverb object
 */
-function update(proverbs, updatedProverb, editing) {
-  return enums.update(proverbs, updatedProverb.id, updatedProverb, editing);
+function update(proverbs, updatedTutorial, editing) {
+  return enums.update(proverbs, updatedTutorial.id, updatedTutorial, editing);
 }
 
 /**
@@ -36,6 +36,6 @@ function update(proverbs, updatedProverb, editing) {
 * @param {Object} proverb object with most recent updates
 * @return {object} state with updates having any editing status removed
 */
-export function updateProverb(proverbs, proverb) {
+export function updateTutorial(proverbs, proverb) {
   return update(proverbs, assign({}, proverb, {editing: null}));
 }

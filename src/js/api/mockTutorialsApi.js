@@ -23,8 +23,8 @@ const generateId = (proverb) => {
   return replaceAll(proverb.body.toLowerCase(), ' ', '-');
 };
 
-class ProverbApi {
-  static getAllProverbs() {
+class TutorialApi {
+  static getAllTutorials() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], proverbs));
@@ -32,7 +32,7 @@ class ProverbApi {
     });
   }
 
-  static getProverb(proverbId) {
+  static getTutorial(proverbId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign({}, proverbWithTranslation(proverbId)));
@@ -40,19 +40,19 @@ class ProverbApi {
     });
   }
 
-  static saveProverb(proverb) {
+  static saveTutorial(proverb) {
     proverb = Object.assign({}, proverb); // to avoid manipulating object passed in.
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         // Simulate server-side validation
-        const minProverbTitleLength = 3;
-        if (proverb.title.length < minProverbTitleLength) {
-          reject(`Title must be at least ${minProverbTitleLength} characters.`);
+        const minTutorialTitleLength = 3;
+        if (proverb.title.length < minTutorialTitleLength) {
+          reject(`Title must be at least ${minTutorialTitleLength} characters.`);
         }
 
         if (proverb.id) {
-          const existingProverbIndex = proverbs.findIndex(a => a.id === proverb.id);
-          proverbs.splice(existingProverbIndex, 1, proverb);
+          const existingTutorialIndex = proverbs.findIndex(a => a.id === proverb.id);
+          proverbs.splice(existingTutorialIndex, 1, proverb);
         } else {
           // Just simulating creation here.
           // The server would generate ids and watchHref's for new proverbs in a real app.
@@ -66,17 +66,17 @@ class ProverbApi {
     });
   }
 
-  static deleteProverb(proverbId) {
+  static deleteTutorial(proverbId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const indexOfProverbToDelete = proverbs.findIndex(proverb => {
+        const indexOfTutorialToDelete = proverbs.findIndex(proverb => {
           return proverb.proverbId === proverbId;
         });
-        proverbs.splice(indexOfProverbToDelete, 1);
+        proverbs.splice(indexOfTutorialToDelete, 1);
         resolve();
       }, delay);
     });
   }
 }
 
-export default ProverbApi;
+export default TutorialApi;

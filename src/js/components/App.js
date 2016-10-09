@@ -2,14 +2,12 @@ import React, { PropTypes, Component } from 'react';
 import Header from '../components/header/Index';
 import SideNav from '../components/sidebar/Index';
 import {connect} from 'react-redux';
-import gql from 'graphql-tag';
 import {bindActionCreators} from 'redux';
-import Relay from 'react-relay';
+import gql from 'graphql-tag';
 import {graphql} from 'react-apollo'
 
 class App extends Component {
   render() {
-	console.log(this.props.data);
    return (
       <div className="wrapper">
         <Header />
@@ -52,3 +50,4 @@ const mapQueriesToProps = (ownProps, state) => {
 const AppWithData = graphql(allTutorialsQuery)(App);
 
 export default connect(mapQueriesToProps)(AppWithData);
+

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/js/api/mockProverbsApi.js</title>
+    <title>Code coverage report for src/js/api/mockTutorialsApi.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">src/js/api</a> mockProverbsApi.js
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/js/api</a> mockTutorialsApi.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -232,8 +232,8 @@ const <span class="fstat-no" title="function not covered" >generateId = (</span>
 <span class="cstat-no" title="statement not covered" >  return replaceAll(proverb.body.toLowerCase(), ' ', '-');</span>
 };
 &nbsp;
-class ProverbApi {
-  static getAllProverbs() {
+class TutorialApi {
+  static getAllTutorials() {
     return new Promise((resolve, reject) =&gt; {
       setTimeout(<span class="fstat-no" title="function not covered" >() =&gt; </span>{
 <span class="cstat-no" title="statement not covered" >        resolve(Object.assign([], proverbs));</span>
@@ -241,7 +241,7 @@ class ProverbApi {
     });
   }
 &nbsp;
-  static getProverb(proverbId) {
+  static getTutorial(proverbId) {
 <span class="cstat-no" title="statement not covered" >    return new Promise(<span class="fstat-no" title="function not covered" >(</span>resolve, reject) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      setTimeout(<span class="fstat-no" title="function not covered" >() =&gt; </span>{</span>
 <span class="cstat-no" title="statement not covered" >        resolve(Object.assign({}, proverbWithTranslation(proverbId)));</span>
@@ -249,19 +249,19 @@ class ProverbApi {
     });
   }
 &nbsp;
-  static saveProverb(proverb) {
+  static saveTutorial(proverb) {
 <span class="cstat-no" title="statement not covered" >    proverb = Object.assign({}, proverb); // to avoid manipulating object passed in.</span>
 <span class="cstat-no" title="statement not covered" >    return new Promise(<span class="fstat-no" title="function not covered" >(</span>resolve, reject) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      setTimeout(<span class="fstat-no" title="function not covered" >() =&gt; </span>{</span>
         // Simulate server-side validation
-        c</span>onst minProverbTitleLength = <span class="cstat-no" title="statement not covered" >3;
-<span class="cstat-no" title="statement not covered" >        if (proverb.title.length &lt; minProverbTitleLength) {</span>
-<span class="cstat-no" title="statement not covered" >          reject(`Title must be at least ${minProverbTitleLength} characters.`);</span>
+        c</span>onst minTutorialTitleLength = <span class="cstat-no" title="statement not covered" >3;
+<span class="cstat-no" title="statement not covered" >        if (proverb.title.length &lt; minTutorialTitleLength) {</span>
+<span class="cstat-no" title="statement not covered" >          reject(`Title must be at least ${minTutorialTitleLength} characters.`);</span>
         }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (proverb.id) {</span>
-          c</span>onst existingProverbIndex = <span class="cstat-no" title="statement not covered" >proverbs.findIndex(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a =&gt; a.id === proverb.id);</span></span>
-<span class="cstat-no" title="statement not covered" >          proverbs.splice(existingProverbIndex, 1, proverb);</span>
+          c</span>onst existingTutorialIndex = <span class="cstat-no" title="statement not covered" >proverbs.findIndex(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a =&gt; a.id === proverb.id);</span></span>
+<span class="cstat-no" title="statement not covered" >          proverbs.splice(existingTutorialIndex, 1, proverb);</span>
         } else {
           // Just simulating creation here.
           // The server would generate ids and watchHref's for new proverbs in a real app.
@@ -275,20 +275,20 @@ class ProverbApi {
     });
   }
 &nbsp;
-  static deleteProverb(proverbId) {
+  static deleteTutorial(proverbId) {
 <span class="cstat-no" title="statement not covered" >    return new Promise(<span class="fstat-no" title="function not covered" >(</span>resolve, reject) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      setTimeout(<span class="fstat-no" title="function not covered" >() =&gt; </span>{</span>
-        c</span>onst indexOfProverbToDelete = <span class="cstat-no" title="statement not covered" >proverbs.findIndex(<span class="fstat-no" title="function not covered" >proverb =&gt; </span>{
+        c</span>onst indexOfTutorialToDelete = <span class="cstat-no" title="statement not covered" >proverbs.findIndex(<span class="fstat-no" title="function not covered" >proverb =&gt; </span>{
 <span class="cstat-no" title="statement not covered" >          return proverb.proverbId === proverbId;</span>
         });
-<span class="cstat-no" title="statement not covered" >        proverbs.splice(indexOfProverbToDelete, 1);</span>
+<span class="cstat-no" title="statement not covered" >        proverbs.splice(indexOfTutorialToDelete, 1);</span>
 <span class="cstat-no" title="statement not covered" >        resolve();</span>
       }, delay);
     });
   }
 }
 &nbsp;
-export default ProverbApi;
+export default TutorialApi;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

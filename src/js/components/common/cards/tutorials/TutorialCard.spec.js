@@ -1,7 +1,7 @@
 import expect from 'expect';
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { mount, shallow } from 'enzyme'; // eslint-disable-line no-unused-vars
-import ProverbCard from './ProverbCard';
+import TutorialCard from './TutorialCard';
 
 const proverb = {
   id: 1,
@@ -24,17 +24,17 @@ function setup(status) {
   let props = {
     proverb
   };
-  return mount(<ProverbCard {...props} />);
+  return mount(<TutorialCard {...props} />);
 }
 
-describe('<ProverbCard />', () => {
+describe('<TutorialCard />', () => {
   let wrapper;
 
   beforeEach(() => {
     wrapper = setup();
   })
 
-  it('renders the ProverbCard component', () => {
+  it('renders the TutorialCard component', () => {
     expect(wrapper.find('.proverb-card').length).toEqual(1);
     expect(wrapper.find('.card-header').text()).toEqual(proverb.body);
   });

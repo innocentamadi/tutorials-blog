@@ -2,10 +2,10 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as actions from '../../../actions/proverbActions';
+import * as actions from '../../../actions/tutorialActions';
 import ListPage from './ListPage';
 
-export class Proverbs extends Component {
+export class Tutorials extends Component {
   constructor(props) {
     super(props);
   }
@@ -17,7 +17,7 @@ export class Proverbs extends Component {
   }
 }
 
-Proverbs.propTypes = {
+Tutorials.propTypes = {
   proverbs: PropTypes.object
 };
 
@@ -32,4 +32,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Proverbs);
+export default connect(mapStateToProps, mapDispatchToProps)(Tutorials);

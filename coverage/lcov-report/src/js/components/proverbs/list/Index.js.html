@@ -117,10 +117,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 &nbsp;
-import * as actions from '../../../actions/proverbActions';
+import * as actions from '../../../actions/tutorialActions';
 import ListPage from './ListPage';
 &nbsp;
-export class Proverbs extends Component {
+export class Tutorials extends Component {
   constructor(props) <span class="branch-1 cbranch-no" title="branch not covered" >{</span>
     super(props);
   }
@@ -132,7 +132,7 @@ export class Proverbs extends Component {
   }
 }
 &nbsp;
-Proverbs.propTypes = {
+Tutorials.propTypes = {
   proverbs: PropTypes.object
 };
 &nbsp;
@@ -147,7 +147,7 @@ const <span class="fstat-no" title="function not covered" >mapDispatchToProps = 
   }
 }
 &nbsp;
-export default connect(mapStateToProps, mapDispatchToProps)(Proverbs);
+export default connect(mapStateToProps, mapDispatchToProps)(Tutorials);
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

@@ -159,10 +159,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import expect from 'expect';
 import proverbReducer from './proverbReducer';
-import * as actions from '../../actions/proverbActions';
+import * as actions from '../../actions/tutorialActions';
 &nbsp;
-describe('Proverb Reducer Test', () =&gt; {
-  it('should load proverbs when passed LOAD_PROVERBS_SUCCESS', () =&gt; {
+describe('Tutorial Reducer Test', () =&gt; {
+  it('should load proverbs when passed LOAD_TUTORIALS_SUCCESS', () =&gt; {
     const initialState = {};
     const proverbs = [
       {id: 1},
@@ -172,7 +172,7 @@ describe('Proverb Reducer Test', () =&gt; {
       1: {id: 1},
       2: {id: 2}
     };
-    const action = actions.loadProverbsSuccess(proverbs);
+    const action = actions.loadTutorialsSuccess(proverbs);
 &nbsp;
     // action
     const newState = proverbReducer(initialState, action);
@@ -181,15 +181,15 @@ describe('Proverb Reducer Test', () =&gt; {
     expect(newState).toEqual(expectedState);
   });
 &nbsp;
-  it("should add a new proverb when passed UPDATE_PROVERB_SUCCESS" +
+  it("should add a new proverb when passed UPDATE_TUTORIAL_SUCCESS" +
     " if proverb doesn't already exist in store", () =&gt; {
     const initialState = {
       1: {id: 1},
       2: {id: 2}
     };
-    const newProverb = {id: 'C'};
+    const newTutorial = {id: 'C'};
 &nbsp;
-    const action = actions.updateProverbSuccess(newProverb);
+    const action = actions.updateTutorialSuccess(newTutorial);
 &nbsp;
     // action
     const newState = proverbReducer(initialState, action);
@@ -198,13 +198,13 @@ describe('Proverb Reducer Test', () =&gt; {
     expect(newState[2].id).toEqual(2);
   });
 &nbsp;
-  it('should update proverb when passed UPDATE_PROVERB_SUCCESS', () =&gt; {
+  it('should update proverb when passed UPDATE_TUTORIAL_SUCCESS', () =&gt; {
     const initialState = {
       1: {id: 1},
       2: {id: 2}
     };
     const proverb = {id: 2, labor_cost: 34};
-    const action = actions.updateProverbSuccess(proverb);
+    const action = actions.updateTutorialSuccess(proverb);
 &nbsp;
     // action
     const updatedState = proverbReducer(initialState, action);

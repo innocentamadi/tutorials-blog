@@ -1,13 +1,14 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
-import * as actions from '../../../actions/proverbActions';
+import gql from 'graphql-tag';
+import {graphql} from 'react-apollo'
+import * as actions from '../../../actions/tutorialActions';
 import ListPage from './ListPage';
 
-export class Proverbs extends Component {
-  constructor(props) {
-    super(props);
+export class Tutorials extends Component {
+  static propTypes = {
+    tutorials: PropTypes.array
   }
 
   render() {
@@ -17,13 +18,39 @@ export class Proverbs extends Component {
   }
 }
 
-Proverbs.propTypes = {
-  proverbs: PropTypes.object
-};
+const allTutorialsQuery = gql`
+	query MyQuery {
+		store {
+			allTutorials {
+				tutorials {
+					id
+					title
+          author {
+            id
+            user {
+              first_name
+              last_name
+            }
+          }
+				}
+			}
+		}
+	}
+`;
+
+const TutorialsWithData = graphql(allTutorialsQuery, {
+  props: ({data, ownProps}) => ({
+    tutorials: !data.loading ? data.store.allTutorials.tutorials : {},
+  }),
+})(Tutorials);
 
 const mapStateToProps = (state, ownProps) => {
-  const { proverbs } = state;
-  return { proverbs };
+  try {
+    const { tutorials } = state;
+    return { tutorials };
+  } catch(e) {
+    return {}
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -32,4 +59,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Proverbs);
+export default connect(mapStateToProps, mapDispatchToProps)(TutorialsWithData);
