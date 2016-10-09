@@ -1,5 +1,5 @@
-import * as proverbActions from '../actions/proverbActions.js';
+import * as tutorialActions from '../actions/tutorialActions.js';
 
 export function loadData(store) {
-  store.dispatch(proverbActions.loadProverbs());
+  // store.dispatch(tutorialActions.loadTutorials());
 }

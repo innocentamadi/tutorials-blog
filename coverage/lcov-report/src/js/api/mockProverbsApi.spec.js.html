@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/js/api/mockProverbsApi.spec.js</title>
+    <title>Code coverage report for src/js/api/mockTutorialsApi.spec.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">src/js/api</a> mockProverbsApi.spec.js
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/js/api</a> mockTutorialsApi.spec.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -90,13 +90,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import expect from 'expect';
-import mockProverbsApi, {proverbWithTranslation} from './mockProverbsApi';
+import mockTutorialsApi, {proverbWithTranslation} from './mockTutorialsApi';
 import {proverbs} from './data/proverbs';
 import {translations} from './data/translations';
 &nbsp;
-describe('mockProverbApi()', () =&gt; {
-  it('returns an array of proverbs on getAllProverbs()', () =&gt; {
-    mockProverbsApi.getAllProverbs()
+describe('mockTutorialApi()', () =&gt; {
+  it('returns an array of proverbs on getAllTutorials()', () =&gt; {
+    mockTutorialsApi.getAllTutorials()
     .then(<span class="fstat-no" title="function not covered" >res =&gt; </span>{
 <span class="cstat-no" title="statement not covered" >      expect(res).toEqual(proverbs);</span>
     });

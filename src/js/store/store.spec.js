@@ -2,7 +2,7 @@ import expect from 'expect';
 import {createStore} from 'redux';
 import rootReducer from '../reducers';
 import initialState from '../reducers/initialState';
-import * as proverbActions from '../actions/proverbActions';
+import * as tutorialActions from '../actions/tutorialActions';
 
 describe('Store', () => {
   it('should load in an array of proverbs', () => {
@@ -14,7 +14,7 @@ describe('Store', () => {
     ];
 
     // act
-    const action = proverbActions.loadProverbsSuccess(proverbs);
+    const action = tutorialActions.loadTutorialsSuccess(proverbs);
     store.dispatch(action);
 
     // assert
@@ -29,7 +29,7 @@ describe('Store', () => {
     const proverb = {id: "A1023"};
 
     // act
-    const action = proverbActions.updateProverbSuccess(proverb);
+    const action = tutorialActions.updateTutorialSuccess(proverb);
     store.dispatch(action);
 
     // assert

@@ -1,11 +1,11 @@
 import expect from 'expect';
-import mockProverbsApi, {proverbWithTranslation} from './mockProverbsApi';
+import mockTutorialsApi, {proverbWithTranslation} from './mockTutorialsApi';
 import {proverbs} from './data/proverbs';
 import {translations} from './data/translations';
 
-describe('mockProverbApi()', () => {
-  it('returns an array of proverbs on getAllProverbs()', () => {
-    mockProverbsApi.getAllProverbs()
+describe('mockTutorialApi()', () => {
+  it('returns an array of proverbs on getAllTutorials()', () => {
+    mockTutorialsApi.getAllTutorials()
     .then(res => {
       expect(res).toEqual(proverbs);
     });

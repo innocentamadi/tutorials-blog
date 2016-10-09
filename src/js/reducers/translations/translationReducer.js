@@ -13,7 +13,7 @@ export default function translationReducer(state = initialState.translations, ac
     case types.LOAD_TRANSLATIONS_SUCCESS:
       return storeHelpers.loadTranslations(state, action.itemId, action.translations);
 
-    case types.LOAD_PROVERB_SUCCESS: {
+    case types.LOAD_TUTORIAL_SUCCESS: {
       const {item_no, translations} = action.item;
       return storeHelpers.loadTranslations(state, item_no, translations);
     }

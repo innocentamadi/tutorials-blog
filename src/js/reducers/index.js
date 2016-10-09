@@ -5,7 +5,7 @@ import ajaxCallsInProgress from './ajaxStatusReducer';
 import ApolloClient, {createNetworkInterface} from 'apollo-client';
 
 export const client = new ApolloClient({
-  networkInterface: createNetworkInterface('http://localhost:9000/graphql'),
+  // networkInterface: createNetworkInterface('http://localhost:9000/graphql'),
 });
 
 const rootReducer = combineReducers({

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/js/actions/proverbActions.js</title>
+    <title>Code coverage report for src/js/actions/tutorialActions.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">src/js/actions</a> proverbActions.js
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/js/actions</a> tutorialActions.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
@@ -135,46 +135,46 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import types from './actionTypes';
 import webAPI from '../utils/webAPI';
-import mockProverbApi from '../api/mockProverbsApi';
+import mockTutorialApi from '../api/mockTutorialsApi';
 &nbsp;
 /**
 * @param {Object} proverbs: object
 * @return {Object} containing the action type and data
 */
-export function loadProverbsSuccess(proverbs) {
-  return { type: types.LOAD_PROVERBS_SUCCESS, proverbs };
+export function loadTutorialsSuccess(proverbs) {
+  return { type: types.LOAD_TUTORIALS_SUCCESS, proverbs };
 }
 &nbsp;
 /**
 * @param {Object} proverbs: object
 * @return {Object} containing the action type and data
 */
-export f</span>unction <span class="fstat-no" title="function not covered" >loadProverbSuccess(proverb) {
-<span class="cstat-no" title="statement not covered" >  return { type: types.LOAD_PROVERB_SUCCESS, proverb };</span>
+export f</span>unction <span class="fstat-no" title="function not covered" >loadTutorialSuccess(proverb) {
+<span class="cstat-no" title="statement not covered" >  return { type: types.LOAD_TUTORIAL_SUCCESS, proverb };</span>
 }
 &nbsp;
 /**
 * @param {Object} proverbs: key proverbs and value is an array of questions
 * @return {Object} containing the action type and proverb
 */
-export function updateProverbSuccess(proverb) {
-  return { type: types.UPDATE_PROVERB_SUCCESS, proverb };
+export function updateTutorialSuccess(proverb) {
+  return { type: types.UPDATE_TUTORIAL_SUCCESS, proverb };
 }
 &nbsp;
-export function loadProverbs() {
+export function loadTutorials() {
   return dispatch =&gt; {
-    return mockProverbApi.getAllProverbs()
+    return mockTutorialApi.getAllTutorials()
       .then(<span class="fstat-no" title="function not covered" >proverbs =&gt; </span>{
-<span class="cstat-no" title="statement not covered" >        dispatch(loadProverbsSuccess(proverbs));</span>
+<span class="cstat-no" title="statement not covered" >        dispatch(loadTutorialsSuccess(proverbs));</span>
       });
   };
 }
 &nbsp;
-export f</span>unction <span class="fstat-no" title="function not covered" >loadProverb(proverbId) {
+export f</span>unction <span class="fstat-no" title="function not covered" >loadTutorial(proverbId) {
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >dispatch =&gt; </span>{</span>
-<span class="cstat-no" title="statement not covered" >    return mockProverbApi.getProverb(proverbId)</span>
+<span class="cstat-no" title="statement not covered" >    return mockTutorialApi.getTutorial(proverbId)</span>
       .then(<span class="fstat-no" title="function not covered" >proverb =&gt; </span>{
-<span class="cstat-no" title="statement not covered" >        dispatch(loadProverbSuccess(proverb));</span>
+<span class="cstat-no" title="statement not covered" >        dispatch(loadTutorialSuccess(proverb));</span>
       });
   };
 }

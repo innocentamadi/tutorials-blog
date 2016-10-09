@@ -1,7 +1,7 @@
 
 /* eslint-disable camelcase */
 
-export let proverbs = [
+export let tutorials = [
     {
       id: 1,
       body: "A dead person shall have all the sleep necessary.",

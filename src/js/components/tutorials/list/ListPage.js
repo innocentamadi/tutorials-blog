@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react'; // eslint-disable-line no-unused-vars
-import ProverbCards from '../../common/cards/proverbs/ProverbCards';
+import TutorialCards from '../../common/cards/tutorials/TutorialCards';
 
-const ListPage = ({ proverbs }) => {
+const ListPage = ({ tutorials }) => {
    return (
-     <div className="proverbs-index">
-       <ProverbCards proverbs={proverbs} />
+     <div className="tutorials-index">
+       <TutorialCards tutorials={tutorials} />
      </div>
    );
  }
 
  ListPage.propTypes = {
-   proverbs: PropTypes.object.isRequired
+   tutorials: PropTypes.object.isRequired
  }
 
  export default ListPage;

@@ -22,3 +22,42 @@
     }
   }
 }
+
+.tutorials-index {
+  padding: 20px;
+}
+
+.tutorial-card {
+  border: 1px solid $lines;
+  box-shadow: 0px 5px 15px $lines;
+  margin-bottom: 20px;
+  padding: 20px;
+
+  p.title {
+    font-size: 2rem;
+    font-weight: 300;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .meta {
+    color: $primary-color;
+    &::before, &::after {
+      font-size: 150%;
+    }
+    &::before {
+      content: '{';
+      margin-right: 10px;
+    }
+    &::after {
+      content: '}';
+      margin-left: 10px;
+    }
+  }
+  .value {
+    color: $light-red;
+  }
+}
