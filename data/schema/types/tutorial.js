@@ -26,6 +26,8 @@ const Tutorial = new GraphQLObjectType({
     id: { type: new GraphQLNonNull(GraphQLID) },
     title: {type: GraphQLString},
     duration: {type: GraphQLString},
+    description: {type: GraphQLString},
+    featured_image_url: {type: GraphQLString},
     author_id: {type: GraphQLInt},
     author: {
       type: Author,

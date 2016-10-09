@@ -21,7 +21,10 @@ const Chapter = new GraphQLObjectType({
     id: { type: new GraphQLNonNull(GraphQLID) },
     title: {type: GraphQLString},
     duration: {type: GraphQLInt},
+    description: {type: GraphQLString},
+    featured_image_url: {type: GraphQLString},
     tutorial_id: {type: GraphQLInt},
+    chapter_order: {type: GraphQLInt},
     pagesConnection: getChildConnectionByName({
       typeName: 'ChapterPages',
       tableType: PAGE,

@@ -25,6 +25,8 @@ const allTutorialsQuery = gql`
 				tutorials {
 					id
 					title
+          featured_image_url
+          description
           author {
             id
             user {
