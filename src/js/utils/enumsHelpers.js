@@ -7,13 +7,11 @@ import assign from 'object-assign';
 * @param {Boolean} editing where applicable
 * @return {Object} new object representing updated collection
 */
-export function update(collection, id, updates, editing) {
-  if (!collection) return collection;
-  let newIdValues = assign({}, collection[id], updates);
-  let newCollection = assign({}, collection);
-  newCollection[id] = resetStatus(newIdValues, editing);
-  return newCollection;
-}
+
+export const objectWithMinValue = (objects, key) => objects ? 
+   objects.reduce((prev, curr) => 
+    prev[key] < curr[key] ? prev : next) :
+    {};
 
 /**
 * @param {Object} resource: the collection to check

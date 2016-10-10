@@ -6,11 +6,7 @@ import {graphql} from 'react-apollo'
 import * as actions from '../../../actions/tutorialActions';
 import ReactMarkdown from 'react-markdown';
 import {Link} from 'react-router';
-
-const firstChapter = chapters => chapters ? 
-   chapters.reduce((prev, curr) => 
-    prev.chapter_order < curr.chapter_order ? prev : next) :
-    {};
+import {objectWithMinValue} from '../../../utils/enumsHelpers.js';
 
 const TutorialBody = ({tutorial, chapters}) =>
   <div className="page-wrapper">
@@ -27,7 +23,7 @@ const TutorialBody = ({tutorial, chapters}) =>
         className="btn btn-default red">
         {'<--- Back to list of tutorials'}
       </Link>
-      <Link to={`/tutorials/${tutorial.id}/chapters/${firstChapter(chapters).id}`} 
+      <Link to={`/tutorials/${tutorial.id}/chapters/${objectWithMinValue(chapters, 'chapter_order').id}`} 
         className="btn btn-default green">
         {'Continue to first chapter --->'}
       </Link>
