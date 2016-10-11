@@ -8,6 +8,14 @@ html {
 	line-height: $line-height;
 }
 
+.overlay {
+	background: rgba(12, 77, 138, 0.3);
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
 #app {
 	display: flex;
 	height: 100%;
