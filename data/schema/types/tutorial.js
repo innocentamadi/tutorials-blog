@@ -18,7 +18,7 @@ import {
 
 import Author from './author.js';
 
-import {getRecordByID} from '../helpers/dbHelpers';
+import {getRecordByColumn} from '../helpers/dbHelpers';
 
 const Tutorial = new GraphQLObjectType({
   name: TUTORIAL,
@@ -31,7 +31,7 @@ const Tutorial = new GraphQLObjectType({
     author_id: {type: GraphQLInt},
     author: {
       type: Author,
-      resolve: tut => getRecordByID('authors', tut.author_id),
+      resolve: tut => getRecordByColumn('authors', tut.author_id ),
     },
     chaptersConnection: getChildConnectionByName({
       typeName: 'TutorialChapters',

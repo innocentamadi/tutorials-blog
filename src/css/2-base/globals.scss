@@ -8,6 +8,15 @@ html {
 	line-height: $line-height;
 }
 
+.overlay {
+	background: rgba(12, 77, 138, 0.3);
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
 #app {
 	display: flex;
 	height: 100%;
@@ -18,11 +27,11 @@ body {
   background-attachment: fixed;
   background-color: $site-bg;
   background-image: url("../img/teddy_bears.jpg");
-  // background-repeat: no-repeat;
   color: $body-text;
-  font-family: $roboto;
+	font-family: $font-family;
   font-size: $base-font-size;
 	height: 100%;
+	letter-spacing: 0.5px;
 }
 
 .wrapper {
@@ -41,7 +50,6 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $roboto;
 }
 
 img {

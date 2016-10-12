@@ -1,16 +1,21 @@
 import assign from 'object-assign';
 
 /**
-* @param {Object} collection : the original data
-* @param {Integer} id used as key in the collection
-* @param {Object} updates : changes to be effected
-* @param {Boolean} editing where applicable
-* @return {Object} new object representing updated collection
+* @param {objects} collection : the original data
+* @param {key} id used as key in the collection
 */
-
 export const objectWithMinValue = (objects, key) => objects ? 
    objects.reduce((prev, curr) => 
     prev[key] < curr[key] ? prev : next) :
+    {};
+
+/**
+* @param {objects} collection : the original data
+* @param {key} id used as key in the collection
+*/
+export const objectWithMaxValue = (objects, key) => objects ? 
+   objects.reduce((prev, curr) => 
+    prev[key] > curr[key] ? prev : next) :
     {};
 
 /**

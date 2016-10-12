@@ -8,7 +8,7 @@ import ReactMarkdown from 'react-markdown';
 import {Link} from 'react-router';
 import {objectWithMinValue} from '../../../utils/enumsHelpers.js';
 
-const TutorialBody = ({tutorial, chapters}) =>
+const TutorialBody = ({tutorial}) =>
   <div className="page-wrapper">
     <img src={tutorial.featured_image_url} />
 
@@ -21,11 +21,11 @@ const TutorialBody = ({tutorial, chapters}) =>
     <div className="button-wrapper">
       <Link to="/" 
         className="btn btn-default red">
-        {'<--- Back to list of tutorials'}
+        {'<= Back to list of tutorials'}
       </Link>
-      <Link to={`/tutorials/${tutorial.id}/chapters/${objectWithMinValue(chapters, 'chapter_order').id}`} 
+      <Link to={`/tutorials/${tutorial.id}/chapters/1`} 
         className="btn btn-default green">
-        {'Continue to first chapter --->'}
+        {'Continue to first chapter =>'}
       </Link>
     </div>
   </div>
@@ -40,7 +40,7 @@ class Tutorial extends React.Component {
   }
 
   render() {
-    const {children, tutorial, chapters} = this.props;
+    const {children, tutorial} = this.props;
     return (
       <div className="panel-container tutorial-page">
         <div className="topic-wrapper">
@@ -51,26 +51,20 @@ class Tutorial extends React.Component {
             {tutorial.title}
           </h3>
         </div>
-      {children ? children : <TutorialBody {...{tutorial, chapters}} />}
+      {children ? children : <TutorialBody {...{tutorial}} />}
       </div>
     )
   }
 }
 
 const tutorialQuery = gql`
-	query MyQuery ($id: ID!) {
+	query tutorialQuery ($id: ID!) {
 		store {
       tutorial(id: $id) {
         id
         title
         featured_image_url
         description
-        chaptersConnection {
-          chapters {
-            id
-            chapter_order
-          }
-        }
         author {
           id
           user {
@@ -89,10 +83,8 @@ const TutorialWithData = graphql(tutorialQuery, {
   }),
   props: ({data}) => ({
     tutorial: !data.loading ? data.store.tutorial : {},
-    chapters: !data.loading ? data.store.tutorial.chaptersConnection.chapters : null
   }),
 })(Tutorial);
-
 const mapStateToProps = (state, ownProps) => {
   try {
     const { tutorials } = state;

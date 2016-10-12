@@ -20,9 +20,9 @@ import {
   mutationWithClientMutationId
 } from 'graphql-relay';
 
-export const getRecordByID = (tableName, columnValue) => {
+export const getRecordByColumn = (tableName, columnValue, column='id') => {
   return db
-    .one(`SELECT * FROM ${tableName} WHERE id = $1`, columnValue)
+    .one(`SELECT * FROM ${tableName} WHERE ${column} = $1`, columnValue)
     .then(result => result);
 };
 
@@ -39,12 +39,15 @@ const getChildTableRecords = ({
   .any(`SELECT * FROM ${tableName} WHERE ${foreignKey} = $1`, 
     parent.id).then(result => result);
 
-const getFieldByColumn = (tableType, tableName) => ({
+const fieldType = field => field == 'id' ? 
+  new GraphQLNonNull(GraphQLID) : GraphQLInt;
+
+const getFieldByColumn = (tableType, tableName, column='id') => ({
   type: tableTypeToGraphQLType(tableType),
   args: {
-    id: {type: new GraphQLNonNull(GraphQLID)}
+    [column]: {type: fieldType(column)}
   },
-  resolve: (_, args) => getRecordByID(tableName, args.id)
+  resolve: (_, args) => getRecordByColumn(tableName, args[column], column)
 });
 
 const getRootConnectionByName = (tableType, tableName) => {
