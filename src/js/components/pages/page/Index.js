@@ -20,13 +20,13 @@ const NavButtons = ({chapter, page}) => {
           className="btn btn-default red">
           {'<--- Previous page'}
         </Link> :
-        <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.id}/`}
+        <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.chapter_order}/`}
           className="btn btn-default red">
           {'<--- Back to chapter intro'}
        </Link> }
 
        {nextPostId != page.id ?
-         <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.id}/pages/${nextPostId}`} 
+         <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.chapter_order}/pages/${nextPostId}`} 
           className="btn btn-default green">
           {'Next page --->'}
         </Link> :
@@ -58,13 +58,13 @@ const Page = ({chapter, page}) => {
  }
 
 const pageQuery = gql`
-	query MyQuery ($id: ID!, $chapterId: ID!) {
+	query chapterQuery ($pageOrder: Int!, $chapterOrder: Int!) {
 		store {
-      chapter(id: $chapterId) {
-        id,
+      chapter(chapter_order: $chapterOrder) {
+				chapter_order
         tutorial_id
       }
-      page(id: $id) {
+      page(page_order: $pageOrder) {
         id
         title
         chapter_id
@@ -78,8 +78,8 @@ const pageQuery = gql`
 const PageWithData = graphql(pageQuery, {
   options: ({params}) => ({
     variables: {
-      id: params.pageId,
-      chapterId: params.chapterId
+      pageOrder: params.pageOrder,
+      chapterOrder: params.chapterOrder
     }
   }),
   props: ({data}) => ({

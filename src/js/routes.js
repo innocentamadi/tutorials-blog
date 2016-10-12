@@ -38,14 +38,14 @@ export default (
             <IndexRoute component={Chapters} />
 
             <Route
-              path="/tutorials/:tutorialId/chapters/:chapterId" 
+              path="/tutorials/:tutorialId/chapters/:chapterOrder" 
               component={Chapter} >
 
-              <Route path="/tutorials/:tutorialId/chapters/:chapterId/pages" >
+              <Route path="/tutorials/:tutorialId/chapters/:chapterOrder/pages" >
                 <IndexRoute component={Pages} />
 
                 <Route
-                  path="/tutorials/:tutorialId/chapters/:chapterId/pages/:pageId" 
+                  path="/tutorials/:tutorialId/chapters/:chapterOrder/pages/:pageOrder" 
                   component={Page} />
               </Route>
 

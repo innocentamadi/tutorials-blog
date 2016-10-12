@@ -30,9 +30,9 @@ const storeType = new GraphQLObjectType({
     allTutorials: getRootConnectionByName(TUTORIAL, 'tutorials'),
     tutorial: getFieldByColumn(TUTORIAL, 'tutorials'),
     allChapters: getRootConnectionByName(CHAPTER, 'chapters'),
-    chapter: getFieldByColumn(CHAPTER, 'chapters'),
+    chapter: getFieldByColumn(CHAPTER, 'chapters', 'chapter_order'),
     allPages: getRootConnectionByName(PAGE, 'pages'),
-    page: getFieldByColumn(PAGE, 'pages')
+    page: getFieldByColumn(PAGE, 'pages', 'page_order')
   })
 })
 

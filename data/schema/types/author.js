@@ -18,7 +18,7 @@ import {
 } from '../../constants';
 
 import User from '../types/user';
-import {getRecordByID} from '../helpers/dbHelpers';
+import {getRecordByColumn} from '../helpers/dbHelpers';
 
 const Author = new GraphQLObjectType({
   name: AUTHOR,
@@ -28,7 +28,7 @@ const Author = new GraphQLObjectType({
     last_name: {type: GraphQLString},
     user: {
       type: User,
-      resolve: author => getRecordByID('users', author.user_id)
+      resolve: author => getRecordByColumn('users', author.user_id)
     },
     tutorialsConnection: getChildConnectionByName({
       typeName: 'AuthorTutorials',

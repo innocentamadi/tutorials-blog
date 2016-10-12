@@ -22,7 +22,7 @@ const ChapterBody = ({chapter, pages}) =>
         className="btn btn-default red">
         {'<--- Back to course intro'}
       </Link>
-      <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.id}/pages/${objectWithMinValue(pages, 'page_order').id}`} 
+      <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.chapter_order}/pages/1`} 
         className="btn btn-default green">
         {'Start chapter --->'}
       </Link>
@@ -39,7 +39,7 @@ class Chapter extends React.Component {
   }
 
   render() {
-    const {children, chapter, pages} = this.props;
+    const {children, chapter} = this.props;
     return (
       <div>
         <div className="chapter-wrapper">
@@ -50,49 +50,38 @@ class Chapter extends React.Component {
             {chapter.title}
           </h4>
         </div>
-        {children ? children : <ChapterBody {...{chapter, pages}} />}
+        {children ? children : <ChapterBody {...{chapter}} />}
       </div>
     )
   }
 }
 
-const pageQuery = gql`
-	query MyQuery ($id: ID!) {
+const chapterQuery = gql`
+	query pageQuery ($chapterOrder: Int!) {
 		store {
-      chapter(id: $id) {
+      chapter(chapter_order: $chapterOrder) {
         id
         title
         tutorial_id
         featured_image_url
         description
-        pagesConnection {
-          pages {
-            id
-            page_order
-          }
-        }
+				chapter_order
       }
 		}
 	}
 `;
 
-const ChapterWithData = graphql(pageQuery, {
+const ChapterWithData = graphql(chapterQuery, {
   options: ({params}) => ({
-    variables: {id: params.chapterId}
+    variables: {chapterOrder: params.chapterOrder}
   }),
   props: ({data}) => ({
     chapter: !data.loading ? data.store.chapter : {},
-    pages: !data.loading ? data.store.chapter.pagesConnection.pages : null
   }),
 })(Chapter);
 
 const mapStateToProps = (state, ownProps) => {
-  try {
-    const { pages } = state;
-    return { pages };
-  } catch(e) {
-    return {}
-  }
+	return {}
 }
 
 export default connect(mapStateToProps)(ChapterWithData);
