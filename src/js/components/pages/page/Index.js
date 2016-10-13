@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
+import {createFragment} from 'apollo-client';
 import ReactMarkdown from 'react-markdown';
 import {Link} from 'react-router';
 import {
@@ -10,35 +11,33 @@ import {
   objectWithMaxValue
 } from '../../../utils/enumsHelpers.js';
 
-const NavButtons = ({chapter, page}) => {
-  let prevPostId = page.id + 1;
-  let nextPostId = page.id
+const NavButtons = ({chapter, page, prevPage, nextPage}) => {
   return (
     <div className="button-wrapper">
-      {prevPostId != page.id ?
-         <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.id}/pages/${prevPostId}`} 
+      {prevPage ?
+         <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.chapter_order}/pages/${prevPage.page_order}`} 
           className="btn btn-default red">
-          {'<--- Previous page'}
+          {'<< Previous page'}
         </Link> :
         <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.chapter_order}/`}
           className="btn btn-default red">
-          {'<--- Back to chapter intro'}
+          {'<< Back to Chapter Intro'}
        </Link> }
 
-       {nextPostId != page.id ?
-         <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.chapter_order}/pages/${nextPostId}`} 
+       {nextPage ?
+         <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.chapter_order}/pages/${nextPage.page_order}`} 
           className="btn btn-default green">
-          {'Next page --->'}
+          {'Next page >>'}
         </Link> :
         <Link to={`/tutorials`} 
           className="btn btn-default green">
-          {'Back to all tutorials --->'}
+          {'Back to all tutorials >>'}
         </Link>}
     </div>
   )
 }
 
-const Page = ({chapter, page}) => {
+const Page = ({chapter, page, prevPage, nextPage}) => {
    return (
     <div className="page-wrapper">
       <div className="title">
@@ -51,14 +50,20 @@ const Page = ({chapter, page}) => {
         <ReactMarkdown 
 					source={page.body} 
 					htmlMode='raw' />
-        <NavButtons {...{chapter, page}} />
+        <NavButtons {...{chapter, page, prevPage, nextPage}} />
       </div>
     </div>
    )
  }
 
+const navPageFragment = createFragment(gql`
+	fragment navPage on Page {
+		page_order
+		title
+	}
+`);
 const pageQuery = gql`
-	query chapterQuery ($pageOrder: Int!, $chapterOrder: Int!) {
+	query chapterQuery ($pageOrder: Int!, $nextPageOrder: Int!, $prevPageOrder: Int!, $chapterOrder: Int!) {
 		store {
       chapter(chapter_order: $chapterOrder) {
 				chapter_order
@@ -71,6 +76,12 @@ const pageQuery = gql`
         body
         page_order
       }
+			prevPage: page(page_order: $prevPageOrder) {
+				...navPage
+			}
+			nextPage: page(page_order: $nextPageOrder) {
+				...navPage
+			}
 		}
 	}
 `;
@@ -79,13 +90,18 @@ const PageWithData = graphql(pageQuery, {
   options: ({params}) => ({
     variables: {
       pageOrder: params.pageOrder,
+			prevPageOrder: String(Number(params.pageOrder) - 1),
+			nextPageOrder: String(Number(params.pageOrder) + 1),
       chapterOrder: params.chapterOrder
-    }
+    },
+		fragments: navPageFragment,
   }),
   props: ({data}) => ({
     page: !data.loading ? data.store.page : {},
+		prevPage: !data.loading ? data.store.prevPage : {},
+		nextPage: !data.loading ? data.store.nextPage : {},
     chapter: !data.loading ? data.store.chapter : {}
   }),
 })(Page);
 
-export default connect()(PageWithData);
+export default PageWithData;

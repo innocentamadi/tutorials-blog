@@ -23,12 +23,14 @@ import {
 export const getRecordByColumn = (tableName, columnValue, column='id') => {
   return db
     .one(`SELECT * FROM ${tableName} WHERE ${column} = $1`, columnValue)
-    .then(result => result);
+    .then(result => result )
+    .catch(err => console.log(err));
 };
 
 const getTableRecords = (tableName) => {
   return db.any(`SELECT * FROM ${tableName}`)
-      .then(result => result);
+      .then(result => result)
+      .catch(err => console.log(err));
 };
 
 const getChildTableRecords = ({
