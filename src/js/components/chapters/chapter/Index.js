@@ -23,7 +23,7 @@ const ChapterBody = ({chapter, pages}) =>
         {'<--- Back to course intro'}
       </Link>
       <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.chapter_order}/pages/1`} 
-        className="btn btn-default green">
+        className="btn btn-inverted-red">
         {'Start chapter --->'}
       </Link>
     </div>
@@ -43,12 +43,12 @@ class Chapter extends React.Component {
     return (
       <div>
         <div className="chapter-wrapper">
-          <h4>
+          <h3>
             <span>
               Chapter {chapter.chapter_order}:
             </span>
             {chapter.title}
-          </h4>
+          </h3>
         </div>
         {children ? children : <ChapterBody {...{chapter}} />}
       </div>

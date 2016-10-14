@@ -98,6 +98,9 @@ a {
   color: $primary-color;
 }
 
+blockquote {
+	border-left: 10px solid darken($primary-color, 4);
+}
 .main-content {
   background: $white;
 	flex: 1;

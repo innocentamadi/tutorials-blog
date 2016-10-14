@@ -24,7 +24,7 @@ const TutorialBody = ({tutorial}) =>
         {'<= Back to list of tutorials'}
       </Link>
       <Link to={`/tutorials/${tutorial.id}/chapters/1`} 
-        className="btn btn-default green">
+        className="btn btn-inverted-red">
         {'Continue to first chapter =>'}
       </Link>
     </div>

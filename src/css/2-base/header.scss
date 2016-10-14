@@ -10,7 +10,7 @@
   padding: 0;
   display: flex;
   justify-content: center;
-	background: #0c4d8a;
+	background: darken($primary-color, 5);
 
   .navbar-brand {
     padding: 15px;

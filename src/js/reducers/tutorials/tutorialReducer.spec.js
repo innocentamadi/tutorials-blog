@@ -1,5 +1,5 @@
 import expect from 'expect';
-import proverbReducer from './proverbReducer';
+import proverbReducer from './tutorialReducer';
 import * as actions from '../../actions/tutorialActions';
 
 describe('Tutorial Reducer Test', () => {

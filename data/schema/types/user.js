@@ -11,10 +11,10 @@ import {
   getChildConnectionByName
 } from '../helpers/dbHelpers.js';
 
-import { USER } from '../../constants';
+import { USER_TYPE } from '../../constants';
 
 const User = new GraphQLObjectType({
-  name: USER,
+  name: USER_TYPE,
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLID) },
     first_name: {type: GraphQLString},
