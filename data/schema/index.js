@@ -21,6 +21,10 @@ import TutorialType from './types/tutorial';
 
 let store = {};
 
+const errorHandler = () => {
+  return {};
+}
+
 const storeType = new GraphQLObjectType({
   name: 'Store',
   fields: () => ({
