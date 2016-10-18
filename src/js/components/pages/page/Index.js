@@ -79,6 +79,9 @@ const Page = ({
    )
  }
 
+Page.defaultProps = {
+	page: {}
+};
 const navPageFragment = createFragment(gql`
 	fragment navPage on Page {
 		page_order
@@ -93,7 +96,7 @@ const navChapterFragment = createFragment(gql`
 `);
 
 const pageQuery = gql`
-	query chapterQuery ($pageOrder: Int!, $nextPageOrder: Int!, $prevPageOrder: Int!, $chapterOrder: Int!, $prevChapterOrder: Int!, $nextChapterOrder: Int!, $tutorialId: ID!) {
+	query pageQuery ($pageOrder: Int!, $nextPageOrder: Int!, $prevPageOrder: Int!, $chapterOrder: Int!, $prevChapterOrder: Int!, $nextChapterOrder: Int!, $tutorialId: ID!) {
 		store {
 			tutorial(id: $tutorialId) {
 				chapter(chapter_order: $chapterOrder) {
@@ -103,7 +106,6 @@ const pageQuery = gql`
 					page(page_order: $pageOrder) {
 						id
 						title
-						chapter_id
 						body
 						page_order
 					}

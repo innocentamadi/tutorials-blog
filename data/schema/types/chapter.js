@@ -38,7 +38,8 @@ const Chapter = new GraphQLObjectType({
       },
       resolve: (chapter, {page_order}) => 
         getRecordByColumn(PAGE_TABLE, {
-          chapter_id: chapter.id,
+          tutorial_id: chapter.tutorial_id,
+          chapter_order: chapter.chapter_order,
           page_order, 
         })
     },
@@ -46,7 +47,7 @@ const Chapter = new GraphQLObjectType({
       typeName: 'ChapterPages',
       tableType: PAGE_TYPE,
       tableName: 'pages',
-      foreignKey: 'chapter_id'
+      foreignKey: 'chapter_order'
     })
   })
 })

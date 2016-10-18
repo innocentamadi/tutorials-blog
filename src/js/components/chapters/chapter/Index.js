@@ -57,26 +57,31 @@ class Chapter extends React.Component {
 }
 
 const chapterQuery = gql`
-	query pageQuery ($chapterOrder: Int!) {
+	query chapterQuery ($tutorialId: ID!, $chapterOrder: Int!) {
 		store {
-      chapter(chapter_order: $chapterOrder) {
-        id
-        title
-        tutorial_id
-        featured_image_url
-        description
-				chapter_order
-      }
+			tutorial(id: $tutorialId) {
+				chapter(chapter_order: $chapterOrder) {
+					id
+					title
+					tutorial_id
+					featured_image_url
+					description
+					chapter_order
+				}
+			}
 		}
 	}
 `;
 
 const ChapterWithData = graphql(chapterQuery, {
   options: ({params}) => ({
-    variables: {chapterOrder: params.chapterOrder}
+    variables: {
+			chapterOrder: params.chapterOrder,
+			tutorialId: params.tutorialId
+		},
   }),
   props: ({data}) => ({
-    chapter: !data.loading ? data.store.chapter : {},
+    chapter: !data.loading ? data.store.tutorial.chapter : {},
   }),
 })(Chapter);
 

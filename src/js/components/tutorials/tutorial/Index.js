@@ -65,11 +65,13 @@ const tutorialQuery = gql`
         title
         featured_image_url
         description
-        author {
-          id
-          user {
-            first_name
-            last_name
+        authorsConnection {
+          authors {
+            id
+            user {
+              first_name
+              last_name
+            }
           }
         }
       }

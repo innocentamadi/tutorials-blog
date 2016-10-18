@@ -26,8 +26,7 @@ const Author = new GraphQLObjectType({
   name: AUTHOR_TYPE,
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLID) },
-    first_name: {type: GraphQLString},
-    last_name: {type: GraphQLString},
+    user_id: {type: GraphQLID},
     user: {
       type: User,
       resolve: author => getRecordByColumn(USER_TABLE, {id: author.user_id})

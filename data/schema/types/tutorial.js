@@ -2,9 +2,15 @@ import {
   GraphQLID,
   GraphQLInt,
   GraphQLNonNull,
+  GraphQLList,
   GraphQLObjectType,
   GraphQLString
 } from 'graphql'
+
+import {
+  connectionFromArray,
+  connectionFromPromisedArray, 
+} from 'graphql-relay';
 
 import {
   getChildConnectionByName
@@ -21,7 +27,10 @@ import {
 import Author from './author';
 import Chapter from './chapter';
 
-import {getRecordByColumn} from '../helpers/dbHelpers';
+import {
+  getRecordByColumn,
+  getRecordsByColumn
+} from '../helpers/dbHelpers';
 
 const Tutorial = new GraphQLObjectType({
   name: TUTORIAL_TYPE,
@@ -31,11 +40,12 @@ const Tutorial = new GraphQLObjectType({
     duration: {type: GraphQLString},
     description: {type: GraphQLString},
     featured_image_url: {type: GraphQLString},
-    author_id: {type: GraphQLInt},
-    author: {
-      type: Author,
-      resolve: tut => getRecordByColumn(AUTHOR_TABLE, {id: tut.author_id} ),
-    },
+    authorsConnection: getChildConnectionByName({
+      typeName: 'TutorialAuthors',
+      tableType: AUTHOR_TYPE,
+      tableName: AUTHOR_TABLE,
+      foreignKey: 'tutorial_id'
+    }),
     chapter: {
       type: Chapter,
       args: {

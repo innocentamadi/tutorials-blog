@@ -17,13 +17,11 @@ import {
   PAGE_TYPE
 } from '../constants';
 
-import TutorialType from './types/tutorial';
+import createTutorialMutation from './mutations/tutorial';
+import createChapterMutation from './mutations/chapter';
+import createPageMutation from './mutations/page';
 
 let store = {};
-
-const errorHandler = () => {
-  return {};
-}
 
 const storeType = new GraphQLObjectType({
   name: 'Store',
@@ -51,12 +49,14 @@ const schema = new GraphQLSchema({
     })
   }),
 
-  // mutation: new GraphQLObjectType({
-  //   name: 'Mutation',
-  //   fields: () => ({
-  //     createAuthor: createAuthorMutation
-  //   })
-  // })
+  mutation: new GraphQLObjectType({
+    name: 'Mutation',
+    fields: () => ({
+      createTutorial: createTutorialMutation,
+      createChapter: createChapterMutation,
+      createPage: createPageMutation
+    })
+  })
 
 });
 

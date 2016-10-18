@@ -12,7 +12,7 @@ class App extends Component {
       <div className="wrapper">
         <Header />
 				<div className="content-wrapper">
-					<SideNav />
+					<SideNav {...this.props} />
 					<div className="main-content">
 						<div className="container">
 							{this.props.children}

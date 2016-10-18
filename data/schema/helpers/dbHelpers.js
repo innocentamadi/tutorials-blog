@@ -48,9 +48,16 @@ export const objToArray = obj => {
   return arr;
 }
 
-export const getRecordByColumn = (tableName, conditions) => {
+export const getRecordByColumn = (tablename, conditions) => {
   return db
-    .one(`SELECT * FROM ${tableName} ${condition(conditions)}`, objToArray(conditions))
+    .one(`select * from ${tablename} ${condition(conditions)}`, objToArray(conditions))
+    .then(result => result )
+    .catch(err => console.log(err));
+};
+
+export const getRecordsByColumn = (tablename, conditions) => {
+  return db
+    .any(`select * from ${tablename} ${condition(conditions)}`, objToArray(conditions))
     .then(result => result )
     .catch(err => console.log(err));
 };

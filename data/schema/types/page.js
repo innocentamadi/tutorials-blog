@@ -15,7 +15,7 @@ const PageType = new GraphQLObjectType({
     title: {type: GraphQLString},
     body: {type: GraphQLString},
     page_order: {type: GraphQLInt},
-    chapter_id: {type: GraphQLInt}
+    chapter_order: {type: GraphQLInt}
   })
 });
 
