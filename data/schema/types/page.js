@@ -14,8 +14,9 @@ const PageType = new GraphQLObjectType({
     id: { type: new GraphQLNonNull(GraphQLID) },
     title: {type: GraphQLString},
     body: {type: GraphQLString},
-    page_order: {type: GraphQLInt},
-    chapter_order: {type: GraphQLInt}
+    page_order: {type: new GraphQLNonNull(GraphQLInt)},
+    chapter_order: {type: new GraphQLNonNull(GraphQLInt)},
+    tutorial_id: {type: new GraphQLNonNull(GraphQLID)}
   })
 });
 
