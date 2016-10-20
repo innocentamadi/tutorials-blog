@@ -24,7 +24,7 @@ const TutorialBody = ({tutorial}) =>
         {'<= Back to list of tutorials'}
       </Link>
       <Link to={`/tutorials/${tutorial.id}/chapters/1`} 
-        className="btn btn-default green">
+        className="btn btn-inverted-red">
         {'Continue to first chapter =>'}
       </Link>
     </div>
@@ -65,11 +65,13 @@ const tutorialQuery = gql`
         title
         featured_image_url
         description
-        author {
-          id
-          user {
-            first_name
-            last_name
+        authorsConnection {
+          authors {
+            id
+            user {
+              first_name
+              last_name
+            }
           }
         }
       }

@@ -19,10 +19,45 @@ import {
   globalIdField,
   mutationWithClientMutationId
 } from 'graphql-relay';
+// create where string
+// make value into an array
 
-export const getRecordByColumn = (tableName, columnValue, column='id') => {
+export const condition = conditions => {
+  let prefix = 'WHERE ';
+  let condition = '';
+  let columns = Object.keys(conditions)
+  for(let i=0; i < columns.length; i++) {
+    condition += `${columns[i]} = $${i + 1}`;
+    if (i < columns.length - 1) condition += ' AND ';
+  }
+  return (prefix + condition)
+}
+
+export const getRecordBy = (tableName, column, parent) => {
   return db
     .one(`SELECT * FROM ${tableName} WHERE ${column} = $1`, columnValue)
+    .then(result => result )
+    .catch(err => console.log(err));
+};
+
+export const objToArray = obj => {
+  let arr = [];
+  for (let key in obj) {
+    arr.push(obj[key]);
+  }
+  return arr;
+}
+
+export const getRecordByColumn = (tablename, conditions) => {
+  return db
+    .one(`select * from ${tablename} ${condition(conditions)}`, objToArray(conditions))
+    .then(result => result )
+    .catch(err => console.log(err));
+};
+
+export const getRecordsByColumn = (tablename, conditions) => {
+  return db
+    .any(`select * from ${tablename} ${condition(conditions)}`, objToArray(conditions))
     .then(result => result )
     .catch(err => console.log(err));
 };
@@ -49,7 +84,7 @@ const getFieldByColumn = (tableType, tableName, column='id') => ({
   args: {
     [column]: {type: fieldType(column)}
   },
-  resolve: (_, args) => getRecordByColumn(tableName, args[column], column)
+  resolve: (_, args) => getRecordByColumn(tableName, {[column]: args[column]})
 });
 
 const getRootConnectionByName = (tableType, tableName) => {

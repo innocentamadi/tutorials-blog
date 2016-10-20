@@ -5,7 +5,7 @@
   margin: 50px 20px;
 
   .title {
-    color: #db6565;
+    color: $light-red;
     font-weight: 300;
     margin-bottom: 30px;
     text-align: center;
@@ -18,5 +18,13 @@
 
   p {
     margin-bottom: 2rem;
+  }
+  img {
+    box-shadow: 0px 5px 20px lighten($body-text, 30px);
+    margin: 20px 0 50px;
+  }
+  pre {
+    background: $site-bg;
+    padding: 10px;
   }
 }

@@ -10,7 +10,7 @@
     "start": "npm-run-all --parallel open:src lint:watch",
     "prod": "NODE_ENV=production node tools/distServer.js",
     "open:src": "babel-node tools/srcServer.js",
-    "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.spec.js\"",
+    "test": "mocha --reporter progress tools/testSetup.js \"data/**/*.spec.js\" \"src/**/*.spec.js\"",
     "test:watch": "npm run test -- --watch",
     "test:coverage": "rimraf coverage/ && istanbul cover _mocha tools/testSetup.js \"src/**/*.spec.js\"",
     "coveralls": "cat ./coverage/lcov.info | coveralls",

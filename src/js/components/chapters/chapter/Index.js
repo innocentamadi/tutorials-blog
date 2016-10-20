@@ -23,7 +23,7 @@ const ChapterBody = ({chapter, pages}) =>
         {'<--- Back to course intro'}
       </Link>
       <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.chapter_order}/pages/1`} 
-        className="btn btn-default green">
+        className="btn btn-inverted-red">
         {'Start chapter --->'}
       </Link>
     </div>
@@ -43,12 +43,12 @@ class Chapter extends React.Component {
     return (
       <div>
         <div className="chapter-wrapper">
-          <h4>
+          <h3>
             <span>
               Chapter {chapter.chapter_order}:
             </span>
             {chapter.title}
-          </h4>
+          </h3>
         </div>
         {children ? children : <ChapterBody {...{chapter}} />}
       </div>
@@ -57,26 +57,31 @@ class Chapter extends React.Component {
 }
 
 const chapterQuery = gql`
-	query pageQuery ($chapterOrder: Int!) {
+	query chapterQuery ($tutorialId: ID!, $chapterOrder: Int!) {
 		store {
-      chapter(chapter_order: $chapterOrder) {
-        id
-        title
-        tutorial_id
-        featured_image_url
-        description
-				chapter_order
-      }
+			tutorial(id: $tutorialId) {
+				chapter(chapter_order: $chapterOrder) {
+					id
+					title
+					tutorial_id
+					featured_image_url
+					description
+					chapter_order
+				}
+			}
 		}
 	}
 `;
 
 const ChapterWithData = graphql(chapterQuery, {
   options: ({params}) => ({
-    variables: {chapterOrder: params.chapterOrder}
+    variables: {
+			chapterOrder: params.chapterOrder,
+			tutorialId: params.tutorialId
+		},
   }),
   props: ({data}) => ({
-    chapter: !data.loading ? data.store.chapter : {},
+    chapter: !data.loading ? data.store.tutorial.chapter : {},
   }),
 })(Chapter);
 

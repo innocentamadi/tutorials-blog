@@ -12,28 +12,29 @@ import {
 } from '../helpers/dbHelpers.js';
 
 import {
-  AUTHOR,
-  TUTORIAL,
-  USER
+  AUTHOR_TYPE,
+  TUTORIAL_TYPE,
+  TUTORIAL_TABLE,
+  USER_TYPE,
+  USER_TABLE
 } from '../../constants';
 
 import User from '../types/user';
 import {getRecordByColumn} from '../helpers/dbHelpers';
 
 const Author = new GraphQLObjectType({
-  name: AUTHOR,
+  name: AUTHOR_TYPE,
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLID) },
-    first_name: {type: GraphQLString},
-    last_name: {type: GraphQLString},
+    user_id: {type: GraphQLID},
     user: {
       type: User,
-      resolve: author => getRecordByColumn('users', author.user_id)
+      resolve: author => getRecordByColumn(USER_TABLE, {id: author.user_id})
     },
     tutorialsConnection: getChildConnectionByName({
       typeName: 'AuthorTutorials',
-      tableType: TUTORIAL,
-      tableName: 'tutorials',
+      tableType: TUTORIAL_TYPE,
+      tableName: TUTORIAL_TABLE,
       foreignKey: 'author_id'
     })
   })

@@ -3,15 +3,22 @@ import Translations from '../translations/Translations';
 import {Link} from 'react-router';
 
 const TutorialCard = ({ tutorial }) => {
+  const {authors} = tutorial.authorsConnection;
+  let userIds = [];
+  let uniqueAuthors = authors.filter(value => {
+    userIds.push(value.user_id);
+    return (userIds.indexOf(value.user_id) !== -1);
+  });
   return (
     <div className="tutorial-card">
       <p className="title">{tutorial.title}</p>
       <footer>
         <div className="meta">
           By: &nbsp;
-          <span className="value">
-            {tutorial.author.user.first_name}
-          </span>
+          {authors && uniqueAuthors.map(author =>
+            <span key={author.user.id} className="value">
+              {author.user.first_name}
+            </span>)}
         </div>
         <Link to={`/tutorials/${tutorial.id}`} 
 					className="btn red-button">Start</Link>

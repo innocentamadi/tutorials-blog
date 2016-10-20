@@ -6,16 +6,17 @@ import {
   GraphQLString
 } from 'graphql'
 
-import {PAGE} from '../../constants';
+import {PAGE_TYPE} from '../../constants';
 
 const PageType = new GraphQLObjectType({
-  name: PAGE,
+  name: PAGE_TYPE,
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLID) },
     title: {type: GraphQLString},
     body: {type: GraphQLString},
-    page_order: {type: GraphQLInt},
-    chapter_id: {type: GraphQLInt}
+    page_order: {type: new GraphQLNonNull(GraphQLInt)},
+    chapter_order: {type: new GraphQLNonNull(GraphQLInt)},
+    tutorial_id: {type: new GraphQLNonNull(GraphQLID)}
   })
 });
 

@@ -9,7 +9,8 @@
   .left-sidebar {
     background-color: $sidebar-bg-color;
     border-right: 1px solid $lines;
-    width: 230px;
+    width: 250px;
+    margin: 0 10px;
 
     @include phablet {
       display: none;
@@ -30,17 +31,18 @@
   }
 
   .author-wrapper {
-    align-items: center;
     color: #0c4d8a;
     display: flex;
+    flex-flow: column;
     font-size: 20px;
     font-weight: 400;
-    height: 100px;
-    justify-content: center;
+    margin: 20px;
 
     .author-name {
       color: rgba(0,0,0,0.6);
+      font-size: 95%;
       margin-left: 5px;
+      margin-top: 20px;
     }
   }
 
@@ -56,7 +58,7 @@
       > a {
         display: block;
         color: lighten($body-text, 30);
-        font-size: 14px;
+        font-size: 120%;
         line-height: 38px;
         overflow: hidden;
         padding: 0 20px;

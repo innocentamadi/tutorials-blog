@@ -4,21 +4,21 @@ import ChapterType from '../types/chapter';
 import PageType from '../types/page';
 
 import {
-  AUTHOR,
-  TUTORIAL,
-  CHAPTER,
-  PAGE
+  AUTHOR_TYPE,
+  TUTORIAL_TYPE,
+  CHAPTER_TYPE,
+  PAGE_TYPE
 } from '../../constants';
 
 const tableTypeToGraphQLType = (tableType) => {
   switch (tableType) {
-    case AUTHOR:
+    case AUTHOR_TYPE:
       return AuthorType;
-    case TUTORIAL:
+    case TUTORIAL_TYPE:
       return TutorialType;
-    case CHAPTER:
+    case CHAPTER_TYPE:
       return ChapterType;
-    case PAGE:
+    case PAGE_TYPE:
       return PageType;
   }
 };

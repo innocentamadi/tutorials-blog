@@ -11,32 +11,30 @@ import {
 } from './helpers/dbHelpers';
 
 import {
-  AUTHOR,
-  TUTORIAL,
-  CHAPTER,
-  PAGE
+  AUTHOR_TYPE,
+  TUTORIAL_TYPE,
+  CHAPTER_TYPE,
+  PAGE_TYPE
 } from '../constants';
 
-import TutorialType from './types/tutorial';
+import createTutorialMutation from './mutations/tutorial';
+import createChapterMutation from './mutations/chapter';
+import createPageMutation from './mutations/page';
 
 let store = {};
-
-const errorHandler = () => {
-  return {};
-}
 
 const storeType = new GraphQLObjectType({
   name: 'Store',
   fields: () => ({
     id: globalIdField('Store'),
-    allAuthors: getRootConnectionByName(AUTHOR, 'authors'),
-    author: getFieldByColumn(AUTHOR, 'authors'),
-    allTutorials: getRootConnectionByName(TUTORIAL, 'tutorials'),
-    tutorial: getFieldByColumn(TUTORIAL, 'tutorials'),
-    allChapters: getRootConnectionByName(CHAPTER, 'chapters'),
-    chapter: getFieldByColumn(CHAPTER, 'chapters', 'chapter_order'),
-    allPages: getRootConnectionByName(PAGE, 'pages'),
-    page: getFieldByColumn(PAGE, 'pages', 'page_order')
+    allAuthors: getRootConnectionByName(AUTHOR_TYPE, 'authors'),
+    author: getFieldByColumn(AUTHOR_TYPE, 'authors'),
+    allTutorials: getRootConnectionByName(TUTORIAL_TYPE, 'tutorials'),
+    tutorial: getFieldByColumn(TUTORIAL_TYPE, 'tutorials'),
+    allChapters: getRootConnectionByName(CHAPTER_TYPE, 'chapters'),
+    chapter: getFieldByColumn(CHAPTER_TYPE, 'chapters', 'chapter_order'),
+    allPages: getRootConnectionByName(PAGE_TYPE, 'pages'),
+    page: getFieldByColumn(PAGE_TYPE, 'pages', 'page_order')
   })
 })
 
@@ -51,12 +49,14 @@ const schema = new GraphQLSchema({
     })
   }),
 
-  // mutation: new GraphQLObjectType({
-  //   name: 'Mutation',
-  //   fields: () => ({
-  //     createAuthor: createAuthorMutation
-  //   })
-  // })
+  mutation: new GraphQLObjectType({
+    name: 'Mutation',
+    fields: () => ({
+      createTutorial: createTutorialMutation,
+      createChapter: createChapterMutation,
+      createPage: createPageMutation
+    })
+  })
 
 });
 
