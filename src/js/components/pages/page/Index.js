@@ -1,15 +1,9 @@
 import React, { PropTypes } from 'react'; // eslint-disable-line no-unused-vars
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 import {createFragment} from 'apollo-client';
 import ReactMarkdown from 'react-markdown';
 import {Link} from 'react-router';
-import {
-  objectWithMinValue,
-  objectWithMaxValue
-} from '../../../utils/enumsHelpers.js';
 
 const NavButtons = ({
 	chapter, 
@@ -22,7 +16,8 @@ const NavButtons = ({
   return (
     <div className="button-wrapper">
       {prevPage ?
-         <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.chapter_order}/pages/${prevPage.page_order}`} 
+        <Link to={`/tutorials/${chapter.
+          tutorial_id}/chapters/${chapter.chapter_order}/pages/${prevPage.page_order}`} 
           className="btn btn-default red">
           {'<< Previous page'}
         </Link> :
@@ -32,7 +27,8 @@ const NavButtons = ({
        </Link> }
 
        {nextPage ?
-         <Link to={`/tutorials/${chapter.tutorial_id}/chapters/${chapter.chapter_order}/pages/${nextPage.page_order}`} 
+           <Link to={`/tutorials/${chapter.
+             tutorial_id}/chapters/${chapter.chapter_order}/pages/${nextPage.page_order}`} 
           className="btn btn-inverted-red">
           {'Next page >>'}
         </Link> :
@@ -50,7 +46,7 @@ const NavButtons = ({
   )
 }
 
-const Page = ({
+export const Page = ({
 	chapter, 
 	page, 
 	prevPage, 

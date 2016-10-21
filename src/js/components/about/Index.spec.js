@@ -17,6 +17,6 @@ describe('<About />', () => {
     const wrapper = setup();
 
     // assertions
-    expect(wrapper.find('h3').text().toLowerCase()).toContain('about');
+    expect(wrapper.find('.about-page').length).toEqual(1);
   });
 });

@@ -1,7 +1,7 @@
 import expect from 'expect';
 import React from 'react'; // eslint-disable-line no-unused-vars
 import {mount, shallow} from 'enzyme'; // eslint-disable-line no-unused-vars
-import Tutorial from './Index';
+import {Page} from './Index';
 
 /**
 * @return {Func} A shallow dom for tests
@@ -9,14 +9,14 @@ import Tutorial from './Index';
 function setup(status) {
   let props = {
   };
-  return shallow(<Tutorial {...props} />);
+  return shallow(<Page {...props} />);
 }
 
-describe('<Tutorial />', () => {
-  it('renders the New Tutorial component', () => {
+describe('<Page />', () => {
+  it('renders the New Page component', () => {
     const wrapper = setup();
 
     // assertions
-    expect(wrapper.find('h3').text().toLowerCase()).toContain('new proverb');
+    expect(wrapper.find('.page-wrapper').length).toEqual(1);
   });
 });
