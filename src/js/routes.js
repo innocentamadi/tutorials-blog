@@ -11,18 +11,12 @@ import Chapters from './components/chapters/list/Index';
 import Chapter from './components/chapters/chapter/Index';
 import Pages from './components/pages/list/Index';
 import Page from './components/pages/page/Index';
-import LoginPage from './components/login/Index';
-import FacebookLogin from './components/login/Facebook';
-import PhoneLogin from './components/login/PhoneNumber';
-import EmailLogin from './components/login/Email';
+
+
 
 export default (
   <Route>
-    <Route path="/login" component={LoginPage}>
-      <Route path="login/facebook" component={FacebookLogin} />
-      <Route path="login/phone-number" component={PhoneLogin} />
-      <Route path="login/email" component={EmailLogin} />
-    </Route>
+
 
     <Route path="/" component={App} >
       <IndexRoute component={HomePage} />

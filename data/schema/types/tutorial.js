@@ -51,10 +51,10 @@ const Tutorial = new GraphQLObjectType({
       args: {
         chapter_order: {type: GraphQLInt},
       },
-      resolve: (tut, {chapter_order}) => 
+      resolve: (tut, {chapter_order}) =>
         getRecordByColumn(CHAPTER_TABLE, {
           tutorial_id: tut.id,
-          chapter_order, 
+          chapter_order,
         })
     },
     chaptersConnection: getChildConnectionByName({

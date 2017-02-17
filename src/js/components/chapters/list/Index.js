@@ -2,7 +2,6 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as actions from '../../../actions/tutorialActions';
 import ListPage from './ListPage';
 
 export class Tutorials extends Component {
@@ -26,10 +25,6 @@ const mapStateToProps = (state, ownProps) => {
   return { proverbs };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tutorials);
+
+export default connect(mapStateToProps)(Tutorials);

@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'; // eslint-disable-line no-unused-vars
-import Translations from '../translations/Translations';
 import {Link} from 'react-router';
 
 const TutorialCard = ({ tutorial }) => {

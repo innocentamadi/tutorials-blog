@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo'
-import * as actions from '../../../actions/tutorialActions';
 import ReactMarkdown from 'react-markdown';
 import {Link} from 'react-router';
 import {objectWithMinValue} from '../../../utils/enumsHelpers.js';
@@ -96,10 +95,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TutorialWithData);
+export default connect(mapStateToProps)(TutorialWithData);

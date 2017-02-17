@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo'
-import * as actions from '../../../actions/tutorialActions';
+//import * as actions from '../../../actions/tutorialActions';
 import ListPage from './ListPage';
 
 export class Tutorials extends Component {
@@ -57,10 +57,5 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(TutorialsWithData);
+export default connect(mapStateToProps)(TutorialsWithData);
